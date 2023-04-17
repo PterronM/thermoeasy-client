@@ -18,16 +18,16 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/registro" element={<Signup />}></Route>
-        <Route path="/acceso" element={<Login />}></Route>
-        <Route path="/recetas" element={<AllRecetas />}></Route>
+        <Route path="/registro" element={<Signup />}/>
+        <Route path="/acceso" element={<Login />}/>
+        <Route path="/recetas" element={<AllRecetas />}/>
         <Route path ="/error" element={<Error/>}/>
         <Route
           path="/recetas/:idReceta"
           element={
-            // <PrivatePage>
+            <PrivatePage>
               <DetalleReceta />
-            // </PrivatePage>
+            </PrivatePage>
           }
         ></Route>
       </Routes>
