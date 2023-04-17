@@ -16,6 +16,16 @@ function SearchBar(props) {
           props.setValueToSearch(e.target.value);
         }}
       />
+      {/* <input
+        className="input-searchBar" 
+        placeholder="Buscar por nº de comensales"
+        type="text"
+        value={search}
+        onChange={(e)=>{
+          setSearch(e.target.value);
+          props.setValueComensales(e.target.value)
+        }}
+      /> */}
     </div>
   );
 }

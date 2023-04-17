@@ -9,7 +9,7 @@ import Navbar from "../components/Navbar";
 function Home() {
   const redirect =  useNavigate();
   const [allRecetas, setAallRecetas] = useState(null);
-  const [isFeaching, setIsFeaching] = useState("")
+  // const [isFeaching, setIsFeaching] = useState("")
   const [valueToSearch, setValueToSearch] = useState("");
 
   useEffect(() => {
