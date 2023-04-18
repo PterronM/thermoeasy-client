@@ -24,7 +24,7 @@ function Login() {
       const response = await loginService(user);
       localStorage.setItem("authToken", response.data.authToken);
       validateToken();
-      redirect("/recetas");
+      redirect("/");
     } catch (error) {
       if (error.response.status === 400) {
         setErrorMessage(error.response.data.errorMessage);

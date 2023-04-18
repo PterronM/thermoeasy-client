@@ -4,11 +4,11 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
-import AllRecetas from "./pages/AllRecetas";
 import PrivatePage from "./components/PrivatePage.jsx";
 import DetalleReceta from "./pages/DetalleReceta";
 import Error from "./pages/Error"
 import SearchBar from "./components/SearchBar";
+import AñadirRec from "./pages/AñadirRec";
 
 
 function App() {
@@ -20,8 +20,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/registro" element={<Signup />}/>
         <Route path="/acceso" element={<Login />}/>
-        <Route path="/recetas" element={<AllRecetas />}/>
-        <Route path ="/error" element={<Error/>}/>
+       
         <Route
           path="/recetas/:idReceta"
           element={
@@ -30,6 +29,17 @@ function App() {
             </PrivatePage>
           }
         ></Route>
+
+        <Route 
+          path="/recetas/añadir" 
+          element={
+            <PrivatePage>
+              <AñadirRec />
+            </PrivatePage>
+          }
+          ></Route>
+
+         <Route path ="/error" element={<Error/>}/>
       </Routes>
     </div>
   );

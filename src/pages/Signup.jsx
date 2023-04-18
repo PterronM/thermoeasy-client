@@ -77,7 +77,7 @@ function Signup() {
         <button onClick={handleSubmit}>Registrarse</button>
       </form>
       <p>¿Ya esta registrado?<Link to="/acceso">Acceder</Link></p>
-      <Link to="/recetas"><button> Ver recetas</button></Link>
+      <Link to="/"><button> Ver recetas</button></Link>
     </div>
   );
 }
