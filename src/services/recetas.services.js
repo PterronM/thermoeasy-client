@@ -11,4 +11,18 @@ const deleteRecetaService = (id) => {
   return service.delete(`/receta/${id}/delete`);
 };
 
-export { allRecetasService, detailRecetaService, deleteRecetaService };
+const addDelFavService = (id,updateFav) =>{
+  return service.patch(`/receta/${id}/favorito`, updateFav)
+};
+
+const newRecService = (newRec) =>{
+  return service.post("/receta/crear-receta" , newRec)
+}
+
+export { 
+  allRecetasService, 
+  detailRecetaService, 
+  deleteRecetaService, 
+  addDelFavService,
+  newRecService
+ };

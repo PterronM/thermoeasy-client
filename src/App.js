@@ -8,7 +8,7 @@ import PrivatePage from "./components/PrivatePage.jsx";
 import DetalleReceta from "./pages/DetalleReceta";
 import Error from "./pages/Error"
 import SearchBar from "./components/SearchBar";
-import AñadirRec from "./pages/AñadirRec";
+import AddReceta from "./pages/AddReceta";
 
 
 function App() {
@@ -34,7 +34,7 @@ function App() {
           path="/recetas/añadir" 
           element={
             <PrivatePage>
-              <AñadirRec />
+              <AddReceta />
             </PrivatePage>
           }
           ></Route>

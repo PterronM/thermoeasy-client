@@ -1,16 +1,20 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { detailRecetaService, deleteRecetaService } from "../services/recetas.services";
+import IsRecFavourite from "../components/IsRecFavourite";
+// import { authContext } from "../context/auth.context";
 
 
 function DetalleReceta() {
   const redirect = useNavigate();
   const params = useParams();
   const {idReceta} = params;
+  // const { loggedUser } = useContext(authContext);
+
 
   const [receta, setReceta] = useState(null);
-  const [userFav, setUserFav] = useState(null);
-  const [isOwner, setIsOwner] = useState();
+  const [userFavs, setUserFav] = useState(null);
+  const [isOwner, setIsOwner] = useState(false);
 
   useEffect(() => {
     const getData = async () => {
@@ -19,6 +23,9 @@ function DetalleReceta() {
         console.log(response.data)
         setReceta(response.data[0]);
         setUserFav(response.data[1]);
+        // if(loggedUser._id === response.data[0].autor._id){
+        //   setIsOwner(true)
+        // }
       } catch (error) {
         redirect("/error");
       }
@@ -63,10 +70,10 @@ function DetalleReceta() {
         <button onClick={deleteReceta}>Eliminar</button>
         </>
         ):(
-          <div className="fav-msg-buttons">
-              <isRecFavorite
+          <div>
+              <IsRecFavourite
                 idReceta={idReceta}
-                userFavs={userFav.favouritesAds}
+                userFavs={userFavs.favoritos}
               />
             </div>
       )}
