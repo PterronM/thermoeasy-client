@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { newRecService } from "../services/recetas.services";
+import { Form, FormGroup, Spinner } from "react-bootstrap";
+import CloudinaryUploader from "../components/CloudinaryUploader";
 
 function AddReceta() {
   const redirect = useNavigate();
@@ -9,7 +11,8 @@ function AddReceta() {
   const [ingredientes, setIngredientes] = useState("");
   const [preparacion, setPreparacion] = useState("");
   const [nPersonas, setNpersonas] = useState("");
-  const [img, setImg] = useState("");
+  const [img, setImg] = useState(null);
+  const [isUploading, setIsUploading] = useState(false);
   const [errorMessage, setErrorMessage] = useState();
 
   const submitNewReceta = (e) => {
@@ -19,11 +22,17 @@ function AddReceta() {
       ingredientes,
       preparacion,
       nPersonas,
-      img,
+      img:[],
     };
 
+    const formData = new FormData();
+    formData.append('img', e.target.files );
+    Array.from(this.state.files).forEach((file) => {
+      formData.append('file', file);
+    });
+
     const sendData = async () => {
-      if (!titulo || !ingredientes || !preparacion || !nPersonas || !img) {
+      if (!titulo || !ingredientes || !preparacion || !nPersonas) {
         setErrorMessage("Los campos deben estar rellenos");
         return;
       }
@@ -43,7 +52,9 @@ function AddReceta() {
         <h3>Añade tu receta !</h3>
       </div>
       <div>
-        <img src={setImg} alt="" />
+        <CloudinaryUploader
+          setImg ={setImg}
+          />
       </div>
       <form>
         <label>Nombre de la receta</label>
