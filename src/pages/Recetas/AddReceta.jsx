@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { newRecService } from "../services/recetas.services";
+import { newRecService } from "../../services/recetas.services";
 import { Form, FormGroup, Spinner } from "react-bootstrap";
-import CloudinaryUploader from "../components/CloudinaryUploader";
+import CloudinaryUploader from "../../components/CloudinaryUploader";
 
 function AddReceta() {
   const redirect = useNavigate();

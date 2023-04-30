@@ -1,10 +1,10 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import { detailRecetaService, deleteRecetaService } from "../services/recetas.services";
-import IsRecFavourite from "../components/IsRecFavourite";
+import { detailRecetaService, deleteRecetaService } from "../../services/recetas.services";
+import IsRecFavourite from "../../components/IsRecFavourite";
 import { Image } from 'cloudinary-react';
-import { authContext } from "../context/auth.context";
-import ModalDeleteRec from "./Modals/ModalDeleteRec";
+import { authContext } from "../../context/auth.context";
+import ModalDeleteRec from "../Modals/ModalDeleteRec";
 
 
 function DetalleReceta() {
@@ -31,7 +31,7 @@ function DetalleReceta() {
           setIsOwner(true)
         }
       } catch (error) {
-        redirect("/error");
+        // redirect("/error");
       }
     };
     getData();
@@ -73,7 +73,11 @@ function DetalleReceta() {
             </div>
             <p>{receta.preparacion}</p>          
             <h4>Receta para: {receta.nPersonas} personas</h4>
+            {receta.autor ? 
             <p>{receta.autor.nombre}</p>
+            : 
+              <p>{receta.autor = "Sin autor"}</p>
+            }
             <p>{new Date(receta.updatedAt).toLocaleDateString()}</p>
         </div>
         {isOwner ? (

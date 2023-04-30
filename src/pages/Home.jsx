@@ -52,12 +52,23 @@ function Home() {
       <h4>No hay recetas</h4>
     ): (
       <div>
+      
       {allRecetas.map((each)=>(
+        each.autor ?
      <Link to={`/recetas/${each._id}`} key ={each._id}>
         <Receta
           img = {each.img}
           titulo = {each.titulo}
           user  = {each.autor.nombre}
+          nPersonas = {each.nPersonas}
+          />
+      </Link>
+      : 
+      <Link to={`/recetas/${each._id}`} key ={each._id}>
+        <Receta
+          img = {each.img}
+          titulo = {each.titulo}
+          user  = "Sin autor"
           nPersonas = {each.nPersonas}
           />
       </Link>

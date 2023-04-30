@@ -1,19 +1,24 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { recetasUser } from "../services/recetas.services";
-import Receta from "../components/Receta";
+import { recetasFavUserService } from "../../services/recetas.services";
+import Receta from "../../components/Receta";
 
-function MisRecetas() {
+function Favoritos() {
   const redirect = useNavigate();
 
-  const [misRec, setMisRec] = useState("");
+  const [recFavUser, setRecFavUser] = useState("");
 
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await recetasUser();
-        // console.log(response.data);
-        setMisRec(response.data);
+        const response = await recetasFavUserService();
+        const filterRec = response.data
+        .filter((each)=>{
+            return(
+                each.titulo.toLowerCase()
+            )
+        })        
+        setRecFavUser(filterRec);
       } catch (error) {
         redirect("/error");
       }
@@ -23,12 +28,12 @@ function MisRecetas() {
 
   return (
     <div>
-      {!misRec ? (
+      {!recFavUser ? (
         <h3>Buscando</h3>
       ) : (
         <>
           <div>
-            {misRec.map((each) => (
+            {recFavUser.map((each) => (
               <Link to={`/recetas/${each._id}`} key={each._id}>
                 <Receta
                   img={each.img}
@@ -45,4 +50,4 @@ function MisRecetas() {
   );
 }
 
-export default MisRecetas;
+export default Favoritos;

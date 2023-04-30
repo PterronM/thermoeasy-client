@@ -1,7 +1,6 @@
 
 
 function Receta(props) {
-  // console.log(props)
   return (
     <div>
       <img src={props.img[0]} alt="receta" width={200} />

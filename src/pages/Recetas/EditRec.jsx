@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { detailRecetaService, editRecService } from "../services/recetas.services";
+import { detailRecetaService, editRecService } from "../../services/recetas.services";
 
 function EditRec() {
  
@@ -49,7 +49,7 @@ function EditRec() {
       }
       await editRecService(idReceta, updatedRec);
       console.log(idReceta)
-      redirect(`/anuncios/${idReceta}`);
+      redirect(`/recetas/${idReceta}`);
     } catch (error) {
       redirect("/error");
     }

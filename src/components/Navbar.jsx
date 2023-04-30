@@ -20,6 +20,7 @@ function Navbar() {
             <NavLink to="/recetas/misRecetas">Mis Recetas</NavLink>
             <NavLink to="/recetas/favoritos">Favoritos</NavLink>
             <NavLink to="/recetas/añadir">Añadir Receta</NavLink>
+            <NavLink to="/">Todas las recetas</NavLink>
             <NavLink to={`/perfil/${loggedUser._id}`}>Perfil</NavLink>
         </div>
       </div>
